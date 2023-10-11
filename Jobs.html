@@ -74,8 +74,8 @@
 <li><a href="about.html" class="menu-links">About</a></li>
 <li><a href="services.html" class="menu-links">Services</a></li>
 <li><a href="techgroup.html" class="menu-links">Techgroup</a></li>
-<li><a href="#client" class="menu-links">Clients</a></li>
-<li><a href="#review" class="menu-links">Review</a></li>
+<li><a href="internship.html" class="menu-links">Internship</a></li>
+<li><a href="Jobs.html" class="menu-links">Jobs</a></li>
 </ul>
 <ul class="bottom-nav">
 <li class="prb">
@@ -148,12 +148,27 @@
     </div>
     </div>
     </section>
-    
-<section class="service pad-tb bg-gradient5">
-<div class="container">
-<div class="row">   
-    <table class="table table-striped">
-    <thead>
+<style>
+	.section {
+		background-color: #000000cc !important;
+		width: 100% !important;
+		min-height: 100vh !important;
+		display: flex important;
+		justify-content: center !important;
+		align-items: center !important;
+		padding: 100px !important;
+	}
+	
+	@media screen and (max-width: 768px) {
+		.section {
+			padding: 50px !important;
+		}
+	}
+</style>
+	<section>
+	<div class="table-responsive col-lg-12">
+    <table class="table table-light table-striped table-hover table-borderless">
+    <thead class="table-dark">
         <tr>
           <th scope="col">Serial</th>
           <th scope="col">CompanyName</th>
@@ -168,8 +183,7 @@
 			<!-- Table data will be dynamically generated here -->
 		</tbody>
     </table>
-	
-	
+</section>
 </section>
 <script>
 	document.addEventListener("DOMContentLoaded", function () {
