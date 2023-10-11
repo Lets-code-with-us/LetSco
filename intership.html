@@ -48,8 +48,8 @@
 		  Find Job
 		</button>
 		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-		  <a class="dropdown-item" href="Job.html">All Job</a>
-		  <a class="dropdown-item" href="internship.html">Internship</a>
+		  <a class="dropdown-item" href="#">Jobs</a>
+		  <a class="dropdown-item" href="#">Internship</a>
 		  
 		</div>
 	  </div>
@@ -74,8 +74,8 @@
 <li><a href="about.html" class="menu-links">About</a></li>
 <li><a href="services.html" class="menu-links">Services</a></li>
 <li><a href="techgroup.html" class="menu-links">Techgroup</a></li>
-<li><a href="#client" class="menu-links">Clients</a></li>
-<li><a href="#review" class="menu-links">Review</a></li>
+<li><a href="internship.html" class="menu-links">Internship</a></li>
+<li><a href="Jobs" class="menu-links">Jobs</a></li>
 </ul>
 <ul class="bottom-nav">
 <li class="prb">
@@ -140,7 +140,7 @@
     <div class="col-lg-12 v-center">
     <div class="bread-inner">
     <div class="bread-title">
-    <h2>Internship</h2>
+    <h2>Jobs</h2>
     </div>
     </div>
     </div>
@@ -148,14 +148,29 @@
     </div>
     </div>
     </section>
-    
-<section class="service pad-tb bg-gradient5">
-<div class="container">
-<div class="row">   
-    <table class="table table-striped">
-    <thead>
+<style>
+	.section {
+		background-color: #000000cc !important;
+		width: 100% !important;
+		min-height: 100vh !important;
+		display: flex important;
+		justify-content: center !important;
+		align-items: center !important;
+		padding: 100px !important;
+	}
+	
+	@media screen and (max-width: 768px) {
+		.section {
+			padding: 50px !important;
+		}
+	}
+</style>
+	<section>
+	<div class="table-responsive col-lg-12">
+    <table class="table table-light table-striped table-hover table-borderless">
+    <thead class="table-dark">
         <tr>
-          <th scope="col">Serial Number</th>
+          <th scope="col">Serial</th>
           <th scope="col">CompanyName</th>
           <th scope="col">Role</th>
           <th scope="col">Experience</th>
@@ -164,14 +179,62 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
+		<tbody id="internship-data">
+			<!-- Table data will be dynamically generated here -->
+		</tbody>
     </table>
 </section>
+	
+	
+</section>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const internshipTable = document.getElementById("internship-data");
+	
+		fetch("https://api.sheety.co/8036ed904403463b0a4980cd1ce3f5f6/job/internship")
+			.then((response) => response.json())
+			.then((data) => {
+				data.internship.forEach((internship, index) => {
+					const row = document.createElement("tr");
+					
+					const indexCell = document.createElement("th");
+					indexCell.setAttribute("scope", "row");
+					indexCell.textContent = index + 1;
+	
+					const companyNameCell = document.createElement("td");
+					companyNameCell.textContent = internship.companyName;
+	
+					const roleCell = document.createElement("td");
+					roleCell.textContent = internship.role;
+	
+					const experienceCell = document.createElement("td");
+					experienceCell.textContent = internship.experience;
+	
+					const locationCell = document.createElement("td");
+					locationCell.textContent = internship.location;
+	
+					const applyCell = document.createElement("td");
+					const applyLink = document.createElement("a");
+					applyLink.href = internship.apply;
+					applyLink.textContent = "Apply Now";
+					applyCell.appendChild(applyLink);
+	
+					row.appendChild(indexCell);
+					row.appendChild(companyNameCell);
+					row.appendChild(roleCell);
+					row.appendChild(experienceCell);
+					row.appendChild(locationCell);
+					row.appendChild(applyCell);
+	
+					internshipTable.appendChild(row);
+				});
+			})
+			.catch((error) => {
+				console.error("Error fetching data: " + error);
+			});
+	});
+	
+</script>
 	
 	<footer>
 		<div class="footer-row1">
@@ -305,3 +368,4 @@
 		
 
 
+ 
